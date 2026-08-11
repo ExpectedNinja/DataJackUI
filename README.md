@@ -1,6 +1,10 @@
-# DataJack
+<div align="center">
+  <img src="logo.png" alt="DataJackUI Logo" width="120" />
+  <h1>DataJackUI</h1>
+  <p>Native Windows C++ Lua & Manifest management utility for Steam.</p>
+</div>
 
-DataJack is a native Windows C++ Lua & Manifest management utility for Steam.
+---
 
 ## 🚀 Releases & Downloads
 

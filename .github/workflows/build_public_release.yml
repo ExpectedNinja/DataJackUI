@@ -46,9 +46,9 @@ jobs:
           if (-not $tag) { $tag = "v1.0.0" }
           
           $notes = @"
-          ## 🚀 DataJack Release $tag
+          ## 🚀 DataJackUI Release $tag
           
-          ✨ **DataJack Native C++ Steam Lua & Manifest Management Utility**
+          ✨ **DataJackUI Native C++ Steam Lua & Manifest Management Utility**
           
           ### 📦 Download & Installation
           - ⚡ **DataJack-win-Setup.exe** — Velopack Silent Installer *(Recommended — Installs to `%LOCALAPPDATA%\DataJack` with shortcuts)*

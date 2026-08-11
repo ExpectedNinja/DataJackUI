@@ -7,8 +7,8 @@ DataJack is a native Windows C++ extension and management utility for Steam.
 Pre-built binaries and silent installers are compiled directly from source and published on the [**Releases**](https://github.com/ExpectedNinja/DataJackUI/releases) page.
 
 ### Available Downloads:
-- ⚡ **`DataJack-win-Setup.exe`**: Velopack Silent Installer *(Recommended — Installs directly to `%LOCALAPPDATA%\DataJack` with desktop & start menu shortcuts)*.
-- 🚀 **`DataJackUI.exe`**: Standalone single file executable *(505 KB)*.
+- ⚡ **`DataJack-win-Setup.exe`**: Velopack Silent Installer *(Recommended — Installs to `%LOCALAPPDATA%\DataJack` with shortcuts)*.
+- 📦 **`DataJack-win-Portable.zip`**: Portable Release Package *(No installation required — extract and run anywhere)*.
 - 🔑 **`version.dll`**: 64-bit Steam proxy binary payload.
 
 ---

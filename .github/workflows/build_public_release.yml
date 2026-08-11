@@ -51,9 +51,8 @@ jobs:
           ✨ **DataJack Native C++ Steam Management Utility**
           
           ### 📦 Download & Installation
-          - ⚡ **DataJack-win-Setup.exe** — Velopack Silent Installer *(Recommended)*
-            - *Installs directly to `%LOCALAPPDATA%\DataJack` with Desktop, Start Menu & Startup shortcuts.*
-          - 🚀 **DataJackUI.exe** — Standalone Single File Executable *(505 KB)*
+          - ⚡ **DataJack-win-Setup.exe** — Velopack Silent Installer *(Recommended — Installs to `%LOCALAPPDATA%\DataJack` with shortcuts)*
+          - 📦 **DataJack-win-Portable.zip** — Portable Release Package *(No installation required — extract and run anywhere)*
           - 🔑 **version.dll** — 64-bit Steam Proxy Binary
           
           ---
@@ -78,7 +77,7 @@ jobs:
           body_path: RELEASE_NOTES.md
           files: |
             src_code/Releases/DataJack-win-Setup.exe
-            src_code/build/Release/DataJackUI.exe
+            src_code/Releases/DataJack-win-Portable.zip
             src_code/build/Release/version.dll
           draft: false
           prerelease: false

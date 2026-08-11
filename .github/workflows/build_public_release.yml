@@ -9,6 +9,8 @@ jobs:
   build:
     name: Compile & Release DataJack
     runs-on: windows-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Private Source Code
@@ -89,7 +91,7 @@ jobs:
           Set-Content -Path "RELEASE_NOTES.md" -Value $notes
 
       - name: Publish GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.client_payload.tag }}
           name: DataJack ${{ github.event.client_payload.tag }}

@@ -23,6 +23,25 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Cache CMake Dependencies & FetchContent
+        uses: actions/cache@v4
+        with:
+          path: |
+            src_code/build/_deps
+            src_code/build/webview2
+          key: ${{ runner.os }}-deps-${{ hashFiles('src_code/CMakeLists.txt', 'src_code/cmake/*.cmake') }}
+          restore-keys: |
+            ${{ runner.os }}-deps-
+
+      - name: Cache Ninja Build Directory
+        uses: actions/cache@v4
+        with:
+          path: |
+            src_code/build
+          key: ${{ runner.os }}-build-${{ hashFiles('src_code/src/**', 'src_code/CMakeLists.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+
       - name: Setup MSVC Environment
         uses: ilammy/msvc-dev-cmd@v1
 

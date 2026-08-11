@@ -78,6 +78,9 @@ jobs:
           files: |
             src_code/Releases/DataJack-win-Setup.exe
             src_code/Releases/DataJack-win-Portable.zip
+            src_code/Releases/*.nupkg
+            src_code/Releases/*.json
+            src_code/Releases/RELEASES
             src_code/build/Release/version.dll
           draft: false
           prerelease: false

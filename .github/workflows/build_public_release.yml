@@ -1,0 +1,86 @@
+name: Build & Publish Release
+
+on:
+  repository_dispatch:
+    types: [build-release]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Compile & Release DataJack
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Private Source Code
+        uses: actions/checkout@v4
+        with:
+          repository: NetrunnerGames/DataJack
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          path: src_code
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup MSVC Environment
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Compile Native Binaries
+        working-directory: src_code
+        run: |
+          cmd /c build.bat
+
+      - name: Setup Velopack CLI
+        run: |
+          dotnet tool install -g vpk
+
+      - name: Package Velopack Silent Installer
+        working-directory: src_code
+        run: |
+          cmd /c pack_installer.bat
+
+      - name: Generate Formatted Release Notes with Emojis
+        run: |
+          $tag = "${{ github.event.client_payload.tag }}"
+          if (-not $tag) { $tag = "v1.0.0" }
+          
+          $notes = @"
+          ## 🚀 DataJack Release $tag
+          
+          ✨ **DataJack Native C++ Steam Management Utility**
+          
+          ### 📦 Download & Installation
+          - ⚡ **DataJack-win-Setup.exe** — Velopack Silent Installer *(Recommended)*
+            - *Installs directly to `%LOCALAPPDATA%\DataJack` with Desktop, Start Menu & Startup shortcuts.*
+          - 🚀 **DataJackUI.exe** — Standalone Single File Executable *(505 KB)*
+          - 🔑 **version.dll** — 64-bit Steam Proxy Binary
+          
+          ---
+          
+          ### 🌟 Highlights & Features
+          - 💎 **Windows 11 Native Mica & Dark Mode Backdrop**
+          - ⚡ **Zero-Disk Memory Streaming Architecture** *(Sub-100MB RAM footprint)*
+          - 🎮 **Automated Steam Games Manifest Scanner**
+          - 📜 **Real-time Diagnostic Log Streamer**
+          - 🔒 **AV-Safe Storage** *(No temporary folders or residue)*
+          
+          ---
+          *Automated Release Pipeline.*
+          "@
+          Set-Content -Path "RELEASE_NOTES.md" -Value $notes
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.client_payload.tag }}
+          name: DataJack ${{ github.event.client_payload.tag }}
+          body_path: RELEASE_NOTES.md
+          files: |
+            src_code/Releases/DataJack-win-Setup.exe
+            src_code/build/Release/DataJackUI.exe
+            src_code/build/Release/version.dll
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

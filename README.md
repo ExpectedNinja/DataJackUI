@@ -2,6 +2,8 @@
   <img src="logo.png" alt="DataJackUI Logo" width="120" />
   <h1>DataJackUI</h1>
   <p>Native Windows C++ Lua & Manifest management utility for Steam.</p>
+  <br />
+  <img src="screenshot.png" alt="DataJackUI Dashboard Screenshot" width="100%" />
 </div>
 
 ---

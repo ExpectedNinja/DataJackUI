@@ -48,7 +48,7 @@ jobs:
           $notes = @"
           ## 🚀 DataJack Release $tag
           
-          ✨ **DataJack Native C++ Steam Management Utility**
+          ✨ **DataJack Native C++ Steam Lua & Manifest Management Utility**
           
           ### 📦 Download & Installation
           - ⚡ **DataJack-win-Setup.exe** — Velopack Silent Installer *(Recommended — Installs to `%LOCALAPPDATA%\DataJack` with shortcuts)*

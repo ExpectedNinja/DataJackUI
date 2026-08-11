@@ -1,6 +1,6 @@
 # DataJack
 
-DataJack is a native Windows C++ extension and management utility for Steam.
+DataJack is a native Windows C++ Lua & Manifest management utility for Steam.
 
 ## 🚀 Releases & Downloads
 
